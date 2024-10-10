@@ -25,11 +25,12 @@ jobs:
       # Step 3: Upload index.html to S3 bucket
       - name: Upload index.html to S3
         run: |
-          aws s3 cp index.html s3://cloudfrontpipeline-luit/index.html --acl public-read
+          aws s3 cp index.html s3://mylevelupcloudresume/index.html --acl public-read
+          aws s3 cp resume.css s3://mylevelupcloudresume/resume.css --acl public-read
 
       # Step 4: Invalidate CloudFront cache to serve updated content
       - name: Invalidate CloudFront
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id ETLJ3P8W2O9U4  \
+            --distribution-id E3AGBKPOHEWHPQ   \
             --paths "/index.html"
